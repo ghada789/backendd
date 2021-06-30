@@ -1,0 +1,219 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :70px;">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-blue-800">Liste Des Rapports</h1>
+                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                           class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                </div>
+
+
+
+                <!-- Content Row -->
+
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <form
+                                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            (input)="filter($event.target.value)" placeholder="Rechercher..."
+                                            aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Ordre de service N°</th>
+                                            <th>Date d'intervention:</th>
+                                            <th>Lieu d'intervention:</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+                                        <tr *ngFor="let r of rapports;let i=index">
+
+
+                                            <td>{{i+1}}</td>
+                                            <td>{{r.ordre}}</td>
+                                            <td>{{r.date}}</td>
+                                            <td>{{r.lieu}}</td>
+                                            <td>
+
+
+
+                                                <button [routerLink]="['/details-rapport', r._id]"
+                                                    class="btn btn-sm btn-info"> <i class="fa fa-eye"></i>
+
+
+                                                </button>
+
+
+
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal"
+                                                    (click)="getIntervention(r._id)" data-target="#logoutModal"> <i
+                                                        class="fa fa-reply"></i>
+
+
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Facture
+                                                    
+                                                </h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <span>
+
+                                                    </span>
+
+                                                </div>
+                                                <br>
+
+                                                <div class="offre-body">
+
+                                                    <span> Location SNG:</span>
+                                                    <ul>
+                                                        <li><B>total minutes:</B>{{this.prixTotalSNG?.totalMinutes}}
+                                                            Minutes</li>
+                                                        <li><B>Nombre 4 heures:</B>{{prixTotalSNG?.countNbFourHours}}
+                                                        </li>
+                                                        <li><B>Cout 4 heures:</B>{{prixTotalSNG?.coutFourHours}} dt</li>
+                                                        <li><B>Nombre 2 heures: </B>{{prixTotalSNG?.countNbTwoHours}}
+                                                        </li>
+                                                        <li><B>Cout 2 heures:</B>{{prixTotalSNG?.coutTwoHours}} dt</li>
+                                                        <li><B>Nombre 1 heure: </B>{{prixTotalSNG?.countNbHours}}</li>
+                                                        <li><B>Cout 1 heure: </B>{{prixTotalSNG?.coutHours}} dt</li>
+                                                        <li><B>nombre 15 min </B>{{prixTotalSNG?.countMinuts}}</li>
+                                                        <li><B>Cout 15 min :</B>{{prixTotalSNG?.coutMinuts}} dt</li>
+                                                        <span> <B>Cout Totale :{{prixTotalSNG?.totalPrix}} DT
+                                                            </B></span>
+
+                                                    </ul>
+                                                    <br>
+                                                    <span> Location avec intervention:</span>
+                                                    <ul>
+                                                        <li><B>total minutes:</B>{{prixTotalIntervention?.totalMinutes}}
+                                                            </li>
+                                                        <li><B>Nombre 10
+                                                                heures:</B>{{prixTotalIntervention?.countNbTenHours}}
+                                                        </li>
+                                                        <li><B>Cout 10
+                                                                heures:</B>{{prixTotalIntervention?.coutTenHours}} dt
+                                                        </li>
+                                                        <li><B>Nombre 4
+                                                                heures:</B>{{prixTotalIntervention?.countNbFourHours}}
+                                                        </li>
+                                                        <li><B>Cout 4
+                                                                heures:</B>{{prixTotalIntervention?.coutFourHours}} dt
+                                                        </li>
+                                                        <li><B>Nombre 2 heures:
+                                                            </B>{{prixTotalIntervention?.countNbTwoHours}}</li>
+                                                        <li><B>Cout 2 heures:</B>{{prixTotalIntervention?.coutTwoHours}}
+                                                            dt</li>
+                                                        <li><B>Nombre 1 heure:
+                                                            </B>{{prixTotalIntervention?.countNbHours}}</li>
+                                                        <li><B>Cout 1 heure: </B>{{prixTotalIntervention?.coutHours}} dt
+                                                        </li>
+                                                        <li><B>Nombre demi-heure:
+                                                            </B>{{prixTotalIntervention?.countNbHalfHour}}</li>
+                                                        <li><B>Cout demi-heure heure:
+                                                            </B>{{prixTotalIntervention?.coutNbHalfHour}} dt</li>
+                                                        <li><B>nombre 15 min
+                                                            </B>{{prixTotalIntervention?.countMinuts}}</li>
+                                                        <li><B>Cout 15 min :</B>{{prixTotalIntervention?.coutMinuts}} dt
+                                                        </li>
+                                                        <span> <B>Cout Totale :{{prixTotalIntervention?.totalPrix}} DT
+                                                            </B></span>
+
+                                                    </ul>
+                                                    <br>
+                                                    <span><B>Total à payer : {{totPayer}} DT</B></span>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <label for="email">Email</label>
+                                                    <input class="form-control" type="email" [(ngModel)]="mail.email" #email="ngModel"
+                                                        id="email" name="email" required> 
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button"
+                                                    data-dismiss="modal">Annuler</button>
+                                                <button class="btn btn-primary" type="button"
+                                                    data-dismiss="modal" (click)="sendMailerIntervention()">envoyer</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End of Footer -->
+
+            </div>
+        </div>

@@ -1,0 +1,178 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :    70px;">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-blue-800">Rapport D'intervention</h1>
+                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                           class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                </div>
+
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h5 class="m-0 font-weight-bold text-primary" style="font-size: large;">Rapport
+                                    d'intervention
+                                    N°</h5>
+                            </div>
+
+                            <!-- Card Body -->
+
+                            <div class="card-body" style="padding:40px;">
+
+                                <form [formGroup]="rapportForm" (ngSubmit)="rapportUser()">
+
+                                    <div class="form-group row">
+                                        <div class="col mb-3 mb-sm-0">
+                                            <h6><u>Référence de la mission:</u></h6>
+
+                                            <div class="form-group">
+                                                <label for="ordre"> Ordre de service N°</label>
+                                                   <select class="form-select form-select-lg mb-3 form-control"  aria-label=".form-select-lg example" formControlName="ordre"  id="ordre"   required>
+                                                     <option *ngFor="let element of _acceptedDemande"  value="{{element._id}}">{{element._id}}</option>
+                                                   </select>           
+                                               
+                                            
+                                                <div *ngIf="ordre.touched && ordre.invalid" class="text-danger">
+                                                    <div *ngIf="ordre.errors.required">
+                                                        <small>*ordre obligatoire</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-inline">
+                                                <label for="date">Date d'intervention:</label>
+                                                <input type="date" formControlName="date" class="form-control"
+                                                    placeholder="" id="date">
+                                                <div *ngIf="date.touched && date.invalid" class="text-danger">
+                                                    <div *ngIf="date.errors.required">
+                                                        <small>*date obligatoire</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lieu">Lieu d'intervention:</label>
+                                                <input type="text" formControlName="lieu" class="form-control"
+                                                    placeholder="" id="date">
+                                                <div *ngIf="lieu.touched && lieu.invalid" class="text-danger">
+                                                    <div *ngIf="lieu.errors.required">
+                                                        <small>*lieu obligatoire</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="personnel"> Personnel intervenant:</label>
+                                                <input type="text" formControlName="personnel" class="form-control"
+                                                    placeholder="" id="personnel">
+                                                <div *ngIf="personnel.touched && personnel.invalid" class="text-danger">
+                                                    <div *ngIf="personnel.errors.required">
+                                                        <small>*personnel obligatoire</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col mb-3 mb-sm-0">
+                                            <h6><u>Durée de la transmission:</u></h6>
+
+                                            <div class="form-inline">
+                                                <label for="duree">Durée: du </label>
+                                                <input type="time" formControlName="dureedu" class="form-control"
+                                                    placeholder="" id="dureedu">
+
+
+                                                <label for="dure">à </label>
+                                                <input type="time" formControlName="dureea" class="form-control"
+                                                    placeholder="" id="dureea">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col mb-3 mb-sm-0">
+                                            <h6><u>Données techniques:</u></h6>
+
+                                            <input type="text" formControlName="donnees" class="form-control"
+                                                placeholder="" id="donnees">
+                                                <div *ngIf="donnees.touched && donnees.invalid" class="text-danger">
+                                                    <div *ngIf="donnees.errors.required">
+                                                        <small>*données est obligatoire</small>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col mb-3 mb-sm-0">
+                                            <h6><u>Moyens utilisés:</u></h6>
+                                            <input type="text" formControlName="moyens" class="form-control"
+                                                placeholder="" id="moyens">
+                                                <div *ngIf="moyens.touched && moyens.invalid" class="text-danger">
+                                                    <div *ngIf="moyens.errors.required">
+                                                        <small>*Moyens est obligatoire</small>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col mb-3 mb-sm-0">
+                                            <h6><u>Observations:</u></h6>
+                                            <input type="text" formControlName="observations" class="form-control"
+                                                placeholder="" id="observations">
+                                                <div *ngIf="observations.touched && observations.invalid" class="text-danger">
+                                                    <div *ngIf="observations.errors.required">
+                                                        <small>*Observations obligatoire</small>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+
+
+                                    <button [disabled]="rapportForm.invalid" type="submit"
+                                        class="btn btn-primary">Envoyer</button>
+
+                                </form>
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+    </div>
+</div>
+
+<!-- End of Footer -->

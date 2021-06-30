@@ -1,0 +1,101 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :70px;">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-blue-800">Direction Commerciale</h1>
+                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                           class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                </div>
+
+
+
+                <!-- Content Row -->
+
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary" style="font-size: large;">Ordre De Service
+                                    N°</h6>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <div class="text">
+                                        <tr>
+                                            <th>Emanant du client:</th>
+                                            <td>{{demande.nom}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Journée(s) de(s) transmission(s):</th>
+                                            <td>{{demande.date_debut}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <th>Objet de la / de(s) transmission(s):</th>
+                                            <td>{{demande.objet}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Moyen de transmission:</th>
+                                            <td>{{demande.moyen}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Lieu de la / de(s) transmission:</th>
+                                            <td>{{demande.lieu}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Heure de transmission:</th>
+                                            <td>{{demande.heure_debut}}</td>
+                                        </tr>
+
+                                    </div>
+                                    <p style="font-family:fantasy; color:crimson; margin-left: 15px; font-size:larger;">
+                                        Nature de la transmission:</p>
+
+                                    <div class="checkbox1">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <label><input type="checkbox"> Suivant convention</label>
+                                        </div>
+                                    </div>
+                                    <div class="checkbox2">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <label><input type="checkbox" checked> Occasionnelle</label>
+                                        </div>
+                                    </div>
+
+                                </table>
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                                
+
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- End of Footer -->
+
+            </div>
+        </div>

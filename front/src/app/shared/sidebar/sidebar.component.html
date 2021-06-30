@@ -1,0 +1,68 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+
+        </div>
+
+        <img class="imageont" src="/assets/img/ontt.png" width="10%">
+        <div class="sidebar-brand-text mx-3"><abbr title="Office National De La Télédiffusion">ONT</abbr></div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" routerLink="/dashboard">
+            <i class="fas fa-home fa-sm fa-fw mr-2"></i>
+            <span> Accueil </span></a>
+    </li>
+
+    <li *ngIf="isUser" class="nav-item active">
+        <a class="nav-link" routerLink="/sngfeed">
+            <i class="fas fa-user"></i>
+            <span>Transmission DSNG </span></a>
+
+
+    </li>
+   
+   
+   
+   
+   
+    <li *ngIf="isAdmin" class="nav-item active">
+        <a class="nav-link" routerLink="/demandes/liste">
+            <i class="fas fa-list"></i>
+            <span>Liste des demandes </span></a>
+
+
+    </li>
+    <li *ngIf="isAdmin" class="nav-item active">
+        <a class="nav-link" routerLink="/liste/ordre">
+            <i class="fab fa-servicestack"></i>
+            <span>Ordre de service</span></a>
+
+
+    </li>
+    <li *ngIf="isSuperAdmin" class="nav-item active">
+        <a class="nav-link" routerLink="/liste-dex">
+            <i class="fas fa-list"></i>
+            <span>liste des ordres de services
+            </span></a>
+    </li>
+    <li *ngIf="isSuperAdmin" class="nav-item active">
+        <a class="nav-link" routerLink="/rapport-d'inter">
+            <i class="fas fa-arrow-circle-right"></i>
+            <span>Rapport d'interventions
+            </span></a>
+
+
+    </li>
+    <li *ngIf="isAdmin" class="nav-item active">
+        <a class="nav-link" routerLink="/liste-rapport">
+            <i class="fas fa-list"></i>
+            <span>Liste des rapports
+            </span></a>
+    </li>

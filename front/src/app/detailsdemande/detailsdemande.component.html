@@ -1,0 +1,245 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :    70px;">
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Informations Demande</h1>
+
+                </div>
+                <!-- Content Row -->
+
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+
+                            <!-- Card Body -->
+
+                            <div class="card-body" style="padding:40px;">
+
+                                <div class="form-group row">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <div class="text">
+                                                <tr>
+                                                    <th>Service:</th>
+                                                    <td>{{demande.service}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Capacité:</th>
+                                                    <td>{{demande.capacite}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date début:</th>
+                                                    <td>{{demande.date_debut}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date fin:</th>
+                                                    <td>{{demande.date_fin}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Heure de début:</th>
+                                                    <td>{{demande.heure_debut}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Heure de fin:</th>
+                                                    <td>{{demande.heure_fin}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th> Moyen de transmission:</th>
+                                                    <td>{{demande.moyen}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Gouvernorat:</th>
+                                                    <td>{{demande.gouvernorat}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Lieu de la / de(s) transmission(s):</th>
+                                                    <td>{{demande.lieu}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Objet:</th>
+                                                    <td>{{demande.objet}}</td>
+                                                </tr>
+                                            </div>
+                                        </table>
+
+
+                                    </div>
+                                    <hr>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#logoutModal" (click)="getdetails(id)">
+                                        Envoyer Offre
+                                    </button>
+                                    <button class="btn btn-danger mx-3" data-toggle="modal"
+                                    data-target="#refusemodal" >
+                                        Refuser
+                                    </button>
+
+
+                                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Offre
+                                                    </h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <span>
+                                                            Faisant suite à votre demande relative à la location d'une
+                                                            SNG pour assurer la transmission en direct,
+                                                            à partir du studio <span
+                                                                class="text-primary"><B>{{demande.lieu}}</B></span> à
+                                                            <span
+                                                                class="text-primary"><B>{{demande.gouvernorat}}</B></span>
+                                                            ,
+                                                            le <span
+                                                                class="text-primary"><B>{{demande.date_debut}}</B></span>
+                                                            et pour une durée de <span
+                                                                class="text-primary"><B>{{offre?.totalMinutes}}</B></span>
+                                                            minutes,
+                                                            honneur vous faire part du cout totalede la couverture de
+                                                            cet événement:
+                                                        </span>
+
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="offre-body">
+
+                                                        <ul>
+                                                            <li><B>total minutes:{{offre?.totalMinutes}} </B></li>
+                                                            <li><B>Nombre 4 heures:{{offre?.countNbFourHours}}</B></li>
+                                                            <li><B>Cout 4 heures:{{offre?.coutFourHours}} dt</B></li>
+                                                            <li><B>Nombre 2 heures:{{offre?.countNbTwoHours}} </B></li>
+                                                            <li><B>Cout 2 heures:{{offre?.coutTwoHours}} dt</B></li>
+                                                            <li><B>Nombre 1 heure:{{offre?.countNbHours}} </B></li>
+                                                            <li><B>Cout 1 heure:{{offre?.coutHours}} dt</B></li>
+                                                            <li><B>nb 15 min {{offre?.countMinuts}} </B></li>
+                                                            <li><B>Cout 15 min :{{offre?.coutMinuts}} dt</B></li>
+
+                                                        </ul>
+
+
+                                   
+                                                        <span style="font-size: large;"> <B>Cout Totale :
+                                                            </B>{{offre?.totalPrix}} dt</span>
+
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <label for="email">Email</label>
+                                                        <input class="form-control" type="email" 
+                                                        value="{{demande.email}}" id="email" name="email" required>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button"
+                                                        data-dismiss="modal" (click)="sendRefusedResponse()">Annuler</button>
+                                                        <button class="btn btn-primary" (click)="sendAcceptedResponse()" type="button"
+                                                        data-dismiss="modal">envoyer</button>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal fade" id="refusemodal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Demande refusée
+                                                </h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label for="email">Email</label>
+                                                    <input class="form-control" type="email"  value="{{demande.email}}"
+                                                       id="email" name="email" required>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button"
+                                                    data-dismiss="modal">Annuler</button>
+                                                    <button class="btn btn-primary"  (click)="sendRefusedResponse()" type="button"
+                                                    data-dismiss="modal">envoyer</button>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+          
+          
+          
+          
+          
+          
+          
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->

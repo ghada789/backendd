@@ -1,0 +1,57 @@
+.card{background-color:rgb(215, 219, 223);}
+.card-title{color:rgb(120, 195, 245);}
+.card-subsubtitle{color: darkblue;
+
+}
+.card-subtitle{color:darkblue;
+    margin-top: 18px;
+}
+.card-text{color:black;
+    
+    }
+.form-check-label{color:black;}
+input {
+  
+   margin-left: 12px;
+   margin-right: 18px;
+   margin-top: 12px;
+   
+   padding-left: 13px;
+   
+   
+  }
+  input[type=submit]{
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;}
+  abbr{
+    font-size: 25px;
+}
+.form-label,label{
+    color: black;
+    margin-right: 12px;
+    
+}
+input[type=text], select {
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+.pp{
+    margin-right: 12px;
+    display: inline-block;
+
+}
+.pa,.paa{
+    display: block;
+
+}
+.col-form-label{
+    color: black;
+}
+

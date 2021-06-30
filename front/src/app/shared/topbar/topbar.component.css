@@ -1,0 +1,10 @@
+.navbar {
+   position: absolute;
+    width:  86.5%;
+
+    padding: 15px 60px;
+    background: rgba(5, 35, 63, 0.2)!important;
+    z-index: 9;
+}
+
+

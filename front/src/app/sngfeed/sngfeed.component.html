@@ -1,0 +1,309 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :50px;">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800"></h1>
+                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+                </div>
+
+
+                <!-- Content Row -->
+
+                <div class="row">
+
+
+
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="container">
+
+                            <h4 class="card-title">Étape 1:Sélectionnez l'emplacement</h4>
+
+                            <h6 class="card-subtitle">Critères de recherche</h6>
+                            <hr>
+                            <form [formGroup]="sngfeedForm" (ngSubmit)="sngfeedUser()">
+                                <div class="row">
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                        <label for="nom">Nom:</label>
+                                        <input type="text" formControlName="nom" class="form-control form-control-user"
+                                            id="exampleNom" placeholder="Nom">
+
+                                        <div *ngIf="nom.touched && nom.invalid" class="text-danger">
+                                            <div *ngIf="nom.errors.required">
+                                                <small>*Nom obligatoire</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="prenom">Prénom:</label>
+                                        <input type="text" formControlName="prenom"
+                                            class="form-control form-control-user" id="exampleprenom"
+                                            placeholder="Prénom">
+                                        <div *ngIf="prenom.touched && prenom.invalid" class="text-danger">
+                                            <div *ngIf="prenom.errors.required">
+                                                <small>*Prénom obligatoire</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                        <label for="nom">Email:</label>
+                                        <input type="text" formControlName="email" class="form-control form-control-user"
+                                            id="exampleemail" placeholder="email">
+                                        
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="telephone">Numéro de téléphone:</label>
+                                        <input type="text" formControlName="telephone"
+                                            class="form-control form-control-user" id="exampletelephone"
+                                            placeholder="Numéro de téléphone">
+                                        <div *ngIf="telephone.touched && telephone.invalid" class="text-danger">
+                                            <div *ngIf="telephone.errors.required">
+                                                <small>*Numéro de téléphone obligatoire</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col sm-6">
+                                        <p class="card-text">
+
+                                            <label for="Service">Service: </label>
+
+
+                                            <select formControlName="service" id="DIGITAL">
+                                                <option value="DIGITAL">DIGITAL</option>
+                                            </select>
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="card-text">
+
+                                            <label for="Capacity">Capacité: </label>
+
+
+                                            <select formControlName="capacite" id="capacity">
+                                                <option value="4.5 MHZ">4.5 MHZ</option>
+                                            </select>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-sm-6">
+                                        <p class="card-text">
+                                            <label for="Capacity">Date début: </label>
+                                            <input formControlName="date_debut" type="date" min={{this.minDate}} />
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="card-text">
+                                            <label for="Capacity">Date fin: </label>
+                                            <input formControlName="date_fin" type="date" /><br>
+                                        </p>
+                                    </div>
+
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-ms-6">
+
+                                        <label for="Capacity">Heure de début: </label>
+                                        <input formControlName="heure_debut" type="time" value="" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="Capacity">Heure de fin: </label>
+                                        <input formControlName="heure_fin" type="time" /><br />
+                                    </div>
+                                </div>
+
+                                <div class="row my-3">
+                                    <div class="col text-danger">{{errHoursMsg}}</div>
+                                </div>
+
+
+
+
+
+                                <fieldset class="form-group">
+                                    <div class="row">
+                                        <legend formControlName="moyen" class="col-form-label col-sm-2 pt-0">
+                                            Moyen de transmission:</legend>
+                                        <div class="col-sm-10">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="moyen"
+                                                    id="gridRadio1" value="SNG" formControlName="moyen"
+                                                    (change)="changeType($event)">
+                                                <label style="margin-left: 40px;margin-top: 5px;"
+                                                    class="form-check-label" for="gridRadio1">
+                                                    SNG
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="moyen"
+                                                    id="gridRadio2" value="SNG+FEED" formControlName="moyen"
+                                                    (change)="changeType($event)">
+                                                <label style="margin-left: 40px;margin-top: 5px;"
+                                                    class="form-check-label" for="gridRadio2">
+                                                    SNG+FEED                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="moyen"
+                                                    id="gridRadio3" value="SNG+FEED+RECEPTION" formControlName="moyen"
+                                                    (change)="changeType($event)">
+                                                <label style="margin-left: 40px;margin-top: 5px;"
+                                                    class="form-check-label" for="gridRadio3">
+                                                    SNG+FEED+RÉCEPTION
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+
+                                <div class="row gy-2 gx-3 align-items-center">
+
+                                    <div class="col-auto">
+                                        <label for="inputState" class="form-label">Gouvernorat:</label>
+                                        <select formControlName="gouvernorat" id="inputState" class="form-select">
+
+                                            <option selected>Bizerte</option>
+                                            <option>Ariana</option>
+                                            <option>Manouba</option>
+                                            <option>Tunis</option>
+                                            <option>Ben Arous</option>
+                                            <option>Nabeul</option>
+                                            <option>Beja</option>
+                                            <option>Jendouba</option>
+                                            <option>Zaghouan</option>
+                                            <option>Le Kef</option>
+                                            <option>Siliana</option>
+                                            <option>Sousse</option>
+                                            <option>Monastir</option>
+                                            <option>Mahdia</option>
+                                            <option>Kairouan</option>
+                                            <option>Kasserine</option>
+
+                                            <option>Sidi Bouzid</option>
+                                            <option>Sfax</option>
+                                            <option>Gafsa</option>
+                                            <option>Tozeur</option>
+                                            <option>Gabes</option>
+                                            <option>Kebili</option>
+                                            <option>Medenine</option>
+                                            <option>Tataouine</option>
+                                        </select>
+                                    </div>
+                                    <div class="pp">
+                                        <label for="inputCity" class="pa" class="form-label">Lieu de la / de(s)
+                                            transmission(s):</label>
+                                    </div>
+                                    <div class="pp">
+                                        <input type="text" formControlName="lieu" class="paa"
+                                            class="form-control form-control-user" id="inputlieu">
+                                        <div *ngIf="lieu.touched && lieu.invalid" class="text-danger">
+                                            <div *ngIf="lieu.errors.required">
+                                                <small>* lieu obligatoire</small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Objet:</label>
+                                    <textarea formControlName="objet" class="form-control" rows="5"
+                                        id="comment"></textarea>
+                                </div>
+
+
+                                <button [disabled]="sngfeedForm.invalid" type="submit" class="btn btn-primary ">
+                                    Envoyer
+                                </button>
+
+
+                            </form>
+
+
+
+                            <h6 class="card-subtitle">
+                                Résultats de recherche
+                            </h6>
+
+                            <hr>
+                            <button type="button" class="btn btn-primary " routerLink="/dashboard">
+                                Accueil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Pie Chart -->
+
+
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <!-- <footer class="sticky-footer bg-white"> -->
+            <!-- <div class="container my-auto"> -->
+                <!-- <div class="copyright text-center my-auto"> -->
+                    <!-- <span>Copyright &copy; Your Website 2021</span> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </footer> -->
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Sur de vouloir quitter votre session?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body"> Sélectionnez «Déconnexion» ci-dessous si vous êtes prêt à quitter votre session en
+                cours.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                <a class="btn btn-primary" routerLink="/login">Deconnexion</a>
+            </div>
+        </div>
+    </div>
+</div>

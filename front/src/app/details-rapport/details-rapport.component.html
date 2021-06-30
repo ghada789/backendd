@@ -1,0 +1,119 @@
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <app-topbar></app-topbar>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid" style="margin-top :70px;">
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Informations Rapport D'intervention</h1>
+
+                </div>
+                <!-- Content Row -->
+
+                <div class="row">
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+
+                            <!-- Card Body -->
+
+                            <div class="card-body" style="padding:40px;">
+
+                                <div class="form-group row">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <div class="text">
+                                                <tr>
+                                                    <th>Ordre de service N°:</th>
+                                                    <td>{{rapport.ordre}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date d'intervention:</th>
+                                                    <td>{{rapport.date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Lieu d'intervention:</th>
+                                                    <td>{{rapport.lieu}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Personnel intervenant:</th>
+                                                    <td>{{rapport.personnel}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Durée: du</th>
+                                                    <td>{{rapport.dureedu}}</td>
+                                                    <th>à</th>
+                                                    <td>{{rapport.dureea}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Données techniques:</th>
+                                                    <td>{{rapport.donnees}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Moyens utilisés:</th>
+                                                    <td>{{rapport.moyens}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Observations:</th>
+                                                    <td>{{rapport.observations}}</td>
+                                                </tr>
+                                            </div>
+                                        </table>
+                                        <button class="btn btn-warning" type="button"
+    data-dismiss="modal" routerLink="/liste-rapport">Annuler</button>
+
+
+                                    </div>
+                                  
+
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+         
+         
+         
+         
+         
+         
+         
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->

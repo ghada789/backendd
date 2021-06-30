@@ -1,0 +1,97 @@
+<div class="top-bar d-none d-md-block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="top-bar-left">
+                    <div class="text">
+                        <i class="far fa-clock"></i>
+                        <h2>8:00 - 18:00</h2>
+                        <p>lundi - vendredi</p>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="top-bar-right">
+                    <div class="social">
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar End -->
+
+<nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Topbar Search -->
+    <!-- Topbar Navbar -->
+
+
+    <ul class="navbar-nav ml-auto">
+        <!-- Nav Item - User Information -->
+        <li *ngIf="isAdmin"  class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class=" d-none d-lg-inline text-gray-600 small"></span>
+
+                <i class="fas fa-cog fa-2x  text-dark"></i>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a  class="dropdown-item" routerLink="/users/list" >
+                    <i class="fas fa-user fa-sm fa-fw   text-success"></i>
+
+                    Utilisateur
+                </a>
+
+            </div>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+
+            <i class="far fa-user fa-2x text-dark"></i>
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+            
+            
+
+            
+            <a *ngIf="isLoggedIn" class="dropdown-item" (click)="logout()">
+                <i class="fas fa-sign-in-alt  fa-fw  text-danger"></i>
+           Se déconnecter
+            </a>
+
+        </div>
+        </li>
+
+    </ul>
+
+
+
+
+
+
+
+
+     
+
+     
+
+     
+
+
+
+</nav>
